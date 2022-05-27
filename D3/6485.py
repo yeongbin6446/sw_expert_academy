@@ -10,15 +10,19 @@ for tc in range(1, t+1):
         route.append(list(map(int,input().split())))
 
     P = int(input())
-    C = []
+    C = {}
+    C_list = []
     for i in range(P):
-        C.append(int(input()))
-
-    li = [0] * max(C)
+        b = int(input())
+        C[b] = 0
+        C_list.append(b)
 
     for r in route:
         for i in range(r[0],r[1]+1):
-            li[i-1] += 1
+            if i in C.keys():
+                C[i] += 1
 
-    print(f"#{tc}", end = ' ')
-    print(*li)
+    print(f"#{tc}", end=' ')
+    for c in C_list:
+        print(C[c],end=' ')
+    print()
